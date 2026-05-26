@@ -1,0 +1,40 @@
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#top" [attr.aria-label]="languageService.content().ui.brandLabel">
+      <span>AY</span>
+      <strong>{{ languageService.content().profile.name }}</strong>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      @for (item of languageService.content().ui.nav; track item.href) {
+        <a [href]="item.href">{{ item.label }}</a>
+      }
+    </nav>
+
+    <div class="header-actions">
+      <app-language-toggle />
+      <app-theme-toggle />
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <app-hero-slider />
+
+  <div class="container">
+    <app-about />
+    <app-skills />
+    <app-experience />
+    <app-projects />
+    <app-education />
+    <app-certificates />
+    <app-contact />
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <span>{{ languageService.content().ui.footer }}</span>
+    <a href="#top">{{ languageService.content().ui.backToTop }}</a>
+  </div>
+</footer>

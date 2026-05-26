@@ -1,0 +1,18 @@
+.language-toggle {
+  min-height: 40px;
+  min-width: 48px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  color: var(--text);
+  background: var(--surface);
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.language-toggle:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 70%, white 10%);
+  background: var(--surface-strong);
+}

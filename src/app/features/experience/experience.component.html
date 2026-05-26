@@ -1,0 +1,26 @@
+<app-section-shell
+  id="experience"
+  [eyebrow]="languageService.content().sections.experience.eyebrow"
+  [title]="languageService.content().sections.experience.title"
+  [description]="languageService.content().sections.experience.description"
+>
+  <div class="timeline">
+    @for (item of languageService.content().experiences; track item.company) {
+      <article class="timeline-item glass">
+        <div class="timeline-meta">
+          <span>{{ item.period }}</span>
+          <small>{{ item.location }}</small>
+        </div>
+        <div class="timeline-content">
+          <h3>{{ item.role }}</h3>
+          <strong>{{ item.company }}</strong>
+          <ul>
+            @for (highlight of item.highlights; track highlight) {
+              <li>{{ highlight }}</li>
+            }
+          </ul>
+        </div>
+      </article>
+    }
+  </div>
+</app-section-shell>

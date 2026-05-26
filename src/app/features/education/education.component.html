@@ -1,0 +1,26 @@
+<app-section-shell
+  id="education"
+  [eyebrow]="languageService.content().sections.education.eyebrow"
+  [title]="languageService.content().sections.education.title"
+  [description]="languageService.content().sections.education.description"
+>
+  <div class="education-grid">
+    <article class="glass panel">
+      <span>{{ languageService.content().education.labels.degree }}</span>
+      <h3>{{ languageService.content().education.degree }}</h3>
+      <p>{{ languageService.content().education.university }} &middot; {{ languageService.content().education.location }}</p>
+      <div>{{ languageService.content().education.period }}</div>
+      <small>{{ languageService.content().education.labels.gpa }} {{ languageService.content().education.gpa }}</small>
+    </article>
+
+    <article class="glass panel">
+      <span>{{ languageService.content().education.labels.languages }}</span>
+      @for (language of languageService.content().languages; track language.name) {
+        <div class="language">
+          <strong>{{ language.name }}</strong>
+          <p>{{ language.level }}</p>
+        </div>
+      }
+    </article>
+  </div>
+</app-section-shell>

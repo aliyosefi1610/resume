@@ -1,0 +1,24 @@
+<app-section-shell
+  id="projects"
+  [eyebrow]="languageService.content().sections.projects.eyebrow"
+  [title]="languageService.content().sections.projects.title"
+  [description]="languageService.content().sections.projects.description"
+>
+  <div class="projects-grid">
+    @for (project of languageService.content().projects; track project.name) {
+      <article class="project glass">
+        <div>
+          <span>{{ project.type }}</span>
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.summary }}</p>
+        </div>
+        <strong>{{ project.impact }}</strong>
+        <div class="stack">
+          @for (tech of project.stack; track tech) {
+            <small>{{ tech }}</small>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</app-section-shell>

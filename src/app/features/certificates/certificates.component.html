@@ -1,0 +1,15 @@
+<app-section-shell
+  id="certificates"
+  [eyebrow]="languageService.content().sections.certificates.eyebrow"
+  [title]="languageService.content().sections.certificates.title"
+  [description]="languageService.content().sections.certificates.description"
+>
+  <div class="certificates">
+    @for (item of languageService.content().certificates; track item) {
+      <article class="certificate glass">
+        <span></span>
+        <p>{{ item }}</p>
+      </article>
+    }
+  </div>
+</app-section-shell>

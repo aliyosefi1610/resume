@@ -1,0 +1,47 @@
+.education-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 1rem;
+}
+
+.panel {
+  border-radius: var(--radius);
+  padding: 1.4rem;
+}
+
+span {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h3 {
+  margin: 0.5rem 0;
+  font-size: 1.45rem;
+}
+
+p,
+small,
+.panel > div {
+  color: var(--muted);
+}
+
+.language + .language {
+  margin-top: 1rem;
+}
+
+.language strong {
+  display: block;
+  margin-top: 0.7rem;
+}
+
+.language p {
+  margin: 0.1rem 0 0;
+}
+
+@media (max-width: 720px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,297 @@
+.revolution-hero {
+  --slide-accent: var(--accent);
+  --parallax-x: 0px;
+  --parallax-y: 0px;
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1100ms ease, visibility 1100ms ease;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-plane {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform: translate3d(calc(var(--parallax-x) * -0.45), calc(var(--parallax-y) * -0.45), 0) scale(1.035);
+  transition: transform 420ms ease-out;
+  will-change: transform;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.62;
+  filter: saturate(1.02) contrast(1.02);
+  transform: scale(1.035);
+}
+
+.slide.active img {
+  animation: slide-zoom 10s ease both;
+}
+
+.slide-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--bg) 86%, transparent), transparent 58%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg) 16%, transparent), var(--bg));
+}
+
+:host-context([data-theme='light']) {
+  .slide img {
+    opacity: 0.5;
+    filter: saturate(0.92) contrast(0.96) brightness(1.04);
+  }
+
+  .slide-shade {
+    background:
+      linear-gradient(90deg, rgba(238, 242, 245, 0.94), rgba(238, 242, 245, 0.42) 58%, rgba(238, 242, 245, 0.74)),
+      linear-gradient(180deg, rgba(238, 242, 245, 0.2), rgba(238, 242, 245, 0.96));
+  }
+
+  .align-end .slide-shade {
+    background:
+      linear-gradient(270deg, rgba(238, 242, 245, 0.94), rgba(238, 242, 245, 0.42) 58%, rgba(238, 242, 245, 0.74)),
+      linear-gradient(180deg, rgba(238, 242, 245, 0.2), rgba(238, 242, 245, 0.96));
+  }
+
+  .motion-light {
+    opacity: 0.36;
+    mix-blend-mode: multiply;
+  }
+
+  .scan-lines {
+    opacity: 0.035;
+  }
+}
+
+.align-end .slide-shade {
+  background:
+    linear-gradient(270deg, color-mix(in srgb, var(--bg) 86%, transparent), transparent 58%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg) 16%, transparent), var(--bg));
+}
+
+.motion-light {
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(circle at 18% 38%, color-mix(in srgb, var(--slide-accent) 18%, transparent), transparent 24rem),
+    linear-gradient(112deg, transparent 42%, color-mix(in srgb, white 8%, transparent) 50%, transparent 59%);
+  mix-blend-mode: screen;
+  transform: translate3d(calc(var(--parallax-x) * 0.35), calc(var(--parallax-y) * 0.28), 0) translateX(-12%) rotate(3deg);
+  animation: light-sweep 11s ease-in-out infinite;
+  will-change: transform;
+}
+
+.scan-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image: linear-gradient(transparent 0 96%, color-mix(in srgb, var(--slide-accent) 28%, transparent) 97%);
+  background-size: 100% 16px;
+  mask-image: linear-gradient(90deg, black, transparent 72%);
+  transform: translate3d(calc(var(--parallax-x) * 0.12), calc(var(--parallax-y) * 0.08), 0);
+  transition: transform 520ms ease-out;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: 100svh;
+  align-items: center;
+  padding-top: 72px;
+  padding-bottom: clamp(4rem, 9vw, 7rem);
+}
+
+.align-end .slide-content {
+  justify-items: end;
+}
+
+.copy-block {
+  width: min(600px, 100%);
+}
+
+.slide.active .copy-block > * {
+  animation: text-rise 980ms ease both;
+}
+
+.slide.active .copy-block h1 {
+  animation-delay: 90ms;
+}
+
+.slide.active .copy-block p {
+  animation-delay: 180ms;
+}
+
+.slide.active .slider-actions {
+  animation-delay: 270ms;
+}
+
+h1 {
+  margin: 0.45rem 0 0;
+  max-width: 680px;
+  font-size: clamp(2.15rem, 6.2vw, 5.2rem);
+  line-height: 1;
+  font-weight: 800;
+}
+
+p {
+  max-width: 580px;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.45vw, 1.08rem);
+}
+
+.slider-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.35rem;
+}
+
+.slider-controls {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 1.4rem;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.slider-controls button {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg) 58%, transparent);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.slider-controls button:hover {
+  transform: translateY(-1px);
+  border-color: var(--slide-accent);
+  background: var(--surface-strong);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 0.45rem;
+}
+
+.dots button {
+  width: 26px;
+  height: 7px;
+  border-radius: 999px;
+  padding: 0;
+  font-size: 0;
+}
+
+.dots button.active {
+  width: 42px;
+  border-color: var(--slide-accent);
+  background: var(--slide-accent);
+}
+
+:host-context([dir='rtl']) {
+  .slide:not(.align-end) .copy-block,
+  .align-end .copy-block {
+    text-align: right;
+  }
+}
+
+@keyframes slide-zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes light-sweep {
+  0%,
+  38% {
+    transform: translate3d(calc(var(--parallax-x) * 0.35), calc(var(--parallax-y) * 0.28), 0) translateX(-20%) rotate(3deg);
+    opacity: 0.36;
+  }
+
+  68%,
+  100% {
+    transform: translate3d(calc(var(--parallax-x) * 0.35), calc(var(--parallax-y) * 0.28), 0) translateX(20%) rotate(3deg);
+    opacity: 0.58;
+  }
+}
+
+@keyframes text-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(3px);
+  }
+}
+
+@media (max-width: 760px) {
+  .slide,
+  .slide.align-end {
+    align-items: end;
+  }
+
+  .slide-content,
+  .align-end .slide-content {
+    justify-items: start;
+    align-items: end;
+  }
+
+  .slide-shade,
+  .align-end .slide-shade {
+    background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 88%, transparent) 46%, var(--bg) 100%);
+  }
+
+  h1 {
+    font-size: clamp(2rem, 11vw, 3.2rem);
+  }
+
+  .slider-controls {
+    justify-content: flex-start;
+    padding-inline: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slide img,
+  .image-plane,
+  .motion-light,
+  .slide.active .copy-block > * {
+    animation: none;
+    transition-duration: 0.01ms;
+  }
+}

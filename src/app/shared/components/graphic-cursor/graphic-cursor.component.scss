@@ -1,0 +1,64 @@
+.graphic-cursor,
+.cursor-halo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 180ms ease;
+}
+
+.graphic-cursor {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+}
+
+.cursor-core {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.cursor-halo {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--accent) 8%, transparent) 0 30%, transparent 62%),
+    conic-gradient(from 120deg, transparent, color-mix(in srgb, var(--accent-strong) 20%, transparent), transparent);
+  mix-blend-mode: screen;
+  transition: opacity 180ms ease, width 180ms ease, height 180ms ease, margin 180ms ease, border-color 180ms ease;
+}
+
+.graphic-cursor.is-visible,
+.cursor-halo.is-visible {
+  opacity: 1;
+}
+
+.cursor-halo.is-active {
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  border-color: color-mix(in srgb, var(--accent-warm) 58%, transparent);
+}
+
+.cursor-halo.is-pressed {
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .graphic-cursor,
+  .cursor-halo {
+    display: none;
+  }
+}

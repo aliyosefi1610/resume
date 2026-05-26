@@ -1,0 +1,37 @@
+<app-section-shell
+  id="about"
+  [eyebrow]="languageService.content().sections.about.eyebrow"
+  [title]="languageService.content().sections.about.title"
+  [description]="languageService.content().sections.about.description"
+>
+  <div class="about-grid">
+    <article class="summary glass">
+      <p>{{ languageService.content().profile.summary }}</p>
+
+      <div class="focus-list" aria-label="Core focus areas">
+        @for (focus of languageService.content().aboutFocus; track focus) {
+          <span>{{ focus }}</span>
+        }
+      </div>
+    </article>
+
+    <div class="stats-grid">
+      @for (stat of languageService.content().stats; track stat.label) {
+        <article class="stat glass">
+          <strong>{{ stat.value }}</strong>
+          <span>{{ stat.label }}</span>
+        </article>
+      }
+    </div>
+
+    <article class="languages glass">
+      <h3>{{ languageService.content().education.labels.languages }}</h3>
+      @for (language of languageService.content().languages; track language.name) {
+        <div class="language-row">
+          <span>{{ language.name }}</span>
+          <strong>{{ language.level }}</strong>
+        </div>
+      }
+    </article>
+  </div>
+</app-section-shell>

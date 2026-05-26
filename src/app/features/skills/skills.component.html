@@ -1,0 +1,33 @@
+<app-section-shell
+  id="skills"
+  [eyebrow]="languageService.content().sections.skills.eyebrow"
+  [title]="languageService.content().sections.skills.title"
+  [description]="languageService.content().sections.skills.description"
+>
+  <div class="filters" aria-label="Skill filters">
+    @for (category of categories(); track category) {
+      <button
+        type="button"
+        [class.active]="activeCategory() === category"
+        (click)="setCategory(category)"
+      >
+        {{ categoryLabel(category) }}
+      </button>
+    }
+  </div>
+
+  <div class="skills-grid">
+    @for (skill of filteredSkills(); track trackSkill($index, skill)) {
+      <article class="skill glass">
+        <div class="skill-head">
+          <strong>{{ skill.name }}</strong>
+          <span>{{ skill.level }}%</span>
+        </div>
+        <div class="bar" aria-hidden="true">
+          <span [style.width.%]="skill.level"></span>
+        </div>
+        <small>{{ categoryLabel(skill.category) }}</small>
+      </article>
+    }
+  </div>
+</app-section-shell>

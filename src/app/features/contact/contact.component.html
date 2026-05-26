@@ -1,0 +1,25 @@
+<app-section-shell
+  id="contact"
+  [eyebrow]="languageService.content().sections.contact.eyebrow"
+  [title]="languageService.content().sections.contact.title"
+  [description]="languageService.content().sections.contact.description"
+>
+  <div class="contact-grid">
+    <a class="contact-card glass" [href]="'mailto:' + languageService.content().profile.email">
+      <span>{{ languageService.content().contact.email }}</span>
+      <strong>{{ languageService.content().profile.email }}</strong>
+    </a>
+    <a class="contact-card glass" [href]="'tel:' + languageService.content().profile.phone.replaceAll(' ', '')">
+      <span>{{ languageService.content().contact.phone }}</span>
+      <strong>{{ languageService.content().profile.phone }}</strong>
+    </a>
+    <a class="contact-card glass" [href]="languageService.content().profile.linkedin" target="_blank" rel="noreferrer">
+      <span>{{ languageService.content().contact.linkedin }}</span>
+      <strong>ali-yousefi</strong>
+    </a>
+    <a class="contact-card glass" [href]="languageService.content().profile.resumeUrl" download>
+      <span>{{ languageService.content().contact.resume }}</span>
+      <strong>{{ languageService.content().contact.download }}</strong>
+    </a>
+  </div>
+</app-section-shell>

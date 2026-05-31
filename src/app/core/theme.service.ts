@@ -25,7 +25,7 @@ export class ThemeService {
       return saved;
     }
 
-    return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    return 'dark';
   }
 
   #applyTheme(theme: Theme): void {

@@ -35,7 +35,7 @@
   font-weight: 800;
 }
 
-.brand span {
+.brand span img {
   display: grid;
   width: 38px;
   height: 38px;
@@ -109,7 +109,7 @@ nav a:hover {
   z-index: 2;
 }
 
-.hero-copy h1,
+.hero-copy h2,
 .hero-copy p,
 .hero-actions,
 .hero-meta {
@@ -128,7 +128,7 @@ nav a:hover {
   animation-delay: 240ms;
 }
 
-h1 {
+h2 {
   margin: 0.35rem 0 0;
   max-width: 760px;
   font-size: clamp(3rem, 11vw, 7.5rem);

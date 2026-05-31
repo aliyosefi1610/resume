@@ -133,7 +133,7 @@
   animation: text-rise 980ms ease both;
 }
 
-.slide.active .copy-block h1 {
+.slide.active .copy-block h2 {
   animation-delay: 90ms;
 }
 
@@ -145,7 +145,7 @@
   animation-delay: 270ms;
 }
 
-h1 {
+h2 {
   margin: 0.45rem 0 0;
   max-width: 680px;
   font-size: clamp(2.15rem, 6.2vw, 5.2rem);
@@ -275,7 +275,7 @@ p {
     background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 88%, transparent) 46%, var(--bg) 100%);
   }
 
-  h1 {
+  h2 {
     font-size: clamp(2rem, 11vw, 3.2rem);
   }
 

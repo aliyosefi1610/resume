@@ -11,7 +11,7 @@
     </a>
     <a class="contact-card glass" [href]="'tel:' + languageService.content().profile.phone.replaceAll(' ', '')">
       <span>{{ languageService.content().contact.phone }}</span>
-      <strong>{{ languageService.content().profile.phone }}</strong>
+      <strong class="phone-number">{{ languageService.content().profile.phone }}</strong>
     </a>
     <a class="contact-card glass" [href]="languageService.content().profile.linkedin" target="_blank" rel="noreferrer">
       <span>{{ languageService.content().contact.linkedin }}</span>

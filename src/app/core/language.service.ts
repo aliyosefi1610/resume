@@ -24,6 +24,6 @@ export class LanguageService {
 
   #initialLanguage(): Language {
     const saved = localStorage.getItem('portfolio-language');
-    return saved === 'fa' || saved === 'en' ? saved : 'fa';
+    return saved === 'fa' || saved === 'en' ? saved : 'en';
   }
 }
